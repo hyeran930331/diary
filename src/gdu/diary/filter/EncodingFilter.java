@@ -23,6 +23,9 @@ public class EncodingFilter implements Filter {
 
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	System.out.println("__________@WebFilter(''/*'') EncodingFilter  doFilter");
+	System.out.println("// 모든 요청이 들어오면 redirect");
+	
 		request.setCharacterEncoding("utf-8");
 		chain.doFilter(request, response);
 	}
