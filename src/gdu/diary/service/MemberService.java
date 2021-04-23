@@ -1,9 +1,12 @@
 package gdu.diary.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import gdu.diary.dao.MemberDao;
+import gdu.diary.dao.MemberQuery;
 import gdu.diary.dao.TodoDao;
 import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
@@ -18,7 +21,28 @@ public class MemberService {
 	// update -> modify
 	// delete -> remove
 	
-	//아이디중복검사후 회원가입
+	
+	
+	public int modifyMember(Member oldMember, Member newMember)throws SQLException {
+		int rowCnt = 0;
+		this.dbUtil = new DBUtil();
+		Connection conn = null;
+		this.memberDao = new MemberDao();
+		this.todoDao = new TodoDao();
+		try {
+			conn=dbUtil.getConnection();
+			
+			conn.commit();
+				
+		} catch(SQLException e) {
+			System.out.println("=====수정 실패");
+			e.printStackTrace();
+			conn.rollback();
+		}
+		return rowCnt;
+	}
+	
+	//아이디중복검사후
 	public int addMember (Member member) throws SQLException {
 		System.out.println("$$$$$$$$$$ addMember  MemberService $$$$$$$$$$");
 		this.memberDao = new MemberDao();
@@ -37,20 +61,14 @@ public class MemberService {
 			conn.commit();
 		}
 		} catch (SQLException e) {
-			try {
-				conn.rollback();
-			} catch(SQLException e1) {
-				e1.printStackTrace();
-			}
+			conn.rollback();
 			e.printStackTrace();
-			return memberIntoRowCnt;
 		}
 		return memberIntoRowCnt;
-		
 	}
 	
 	//삭제성공 trun  삭제실패rollback : false
-	public boolean romoveMemberByKey(Member member) {
+	public boolean removeMemberByKey(Member member) {
 		this.todoDao = new TodoDao();
 		this.memberDao = new MemberDao(); //Cannot invoke "gdu.diary.dao.MemberDao.deleteMemberByKey(java.sql.Connection, gdu.diary.vo.Member)" because "this.memberDao" is null
 		this.dbUtil = new DBUtil();

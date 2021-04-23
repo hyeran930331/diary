@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AuthFilter
  */
-@WebFilter("/auth/*") // 1encoding filter 2 authfilter 3 index controller 4authfilter 5encodingfilter
+@WebFilter("/_auth/*") // 1encoding filter 2 authfilter 3 index controller 4authfilter 5encodingfilter
 public class AuthFilter implements Filter {
 
 	@Override

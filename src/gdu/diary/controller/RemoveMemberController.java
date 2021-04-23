@@ -33,12 +33,12 @@ public class RemoveMemberController extends HttpServlet {
 		member.setMemberPw(memberPw);
 		
 		this.memberService = new MemberService();
-		boolean result = this.memberService.romoveMemberByKey(member);
+		boolean result = this.memberService.removeMemberByKey(member);
 		if(result == false) { //if(!result) {
 			System.out.println("=====탈퇴 실패");
 			response.sendRedirect(request.getContextPath()+"/auth/removeMember");
 			return;
-		}
+			}
 		response.sendRedirect(request.getContextPath()+"/auth/logout");
 	}
 

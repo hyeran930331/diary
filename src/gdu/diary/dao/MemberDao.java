@@ -11,6 +11,29 @@ import gdu.diary.vo.Member;
 public class MemberDao {
 	private DBUtil dbUtil;
 	
+	public int updateMember(Connection conn, Member oldMember, Member newMember) throws SQLException{
+		System.out.println("~~~~~~~~~~~~ updateMember  Memberdao~~~~~~~~~~~");
+		this.dbUtil = new DBUtil();
+		int rowCnt = 0;
+		
+		PreparedStatement stmt = null;
+		System.out.println("~~~~~~  newMember.getMemberPw()"+newMember.getMemberPw());
+		System.out.println("~~~~~~  ewMember.getMemberId()" +newMember.getMemberId());
+		System.out.println("~~~~~~  newMember.getMemberPw()"+oldMember.getMemberNo());
+		
+		try {
+			stmt = conn.prepareStatement(MemberQuery.UPDATE_IDPW_BY_MEMBER);
+			stmt.setString(1, newMember.getMemberPw());
+			stmt.setString(2, newMember.getMemberId());
+			stmt.setInt(3, oldMember.getMemberNo());
+			
+			rowCnt = stmt.executeUpdate();
+		} finally {
+			dbUtil.close(null, stmt, null);
+		}	
+		return rowCnt;
+	}
+	
 	public int insertMember(Connection conn, Member member) throws SQLException{
 		System.out.println("############ insertMember  Memberdao###########");
 		this.dbUtil = new DBUtil();
@@ -31,9 +54,10 @@ public class MemberDao {
 	}
 	
 	public int findMemberId(Connection conn, String memberId) throws SQLException{
-		System.out.println("############ findMemberId  Memberdao###########");
+		System.out.println("\n ############ findMemberId  Memberdao###########");
 		this.dbUtil = new DBUtil();
 		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		int rowCnt = 0;
 		//이젠 이건 기본값인데
 		
@@ -42,7 +66,14 @@ public class MemberDao {
 			stmt = conn.prepareStatement(MemberQuery.SELECT_MEMBERID);
 			//sql을 이젠 직접치지 않고 final String 값으로 받는다.
 			stmt.setString(1, memberId);
-			rowCnt = stmt.executeUpdate();
+			System.out.println("### memberId : "+memberId);
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				rowCnt= rowCnt+1;
+			}
+			
+			System.out.println("### rowCnt : "+rowCnt);
 			if (rowCnt>0) {
 				System.out.println("###이미 있는 아이디 입니다");
 			} else {
