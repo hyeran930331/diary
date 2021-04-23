@@ -5,19 +5,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>modify member</title>
 </head>
 <body>
-	<h1>insert</h1>
-	<c:if test="${sessionMember == null }">
-		<form action="${pageContext.request.contextPath}/insertMember" method="post">
+	<h1>modify</h1>
+	<c:if test="${sessionMember != null }">
+		<form action="${pageContext.request.contextPath}/modifyMember" method="post">
 			<div>ID :
-			<input type="text" name="memberId"> </div>
+			<input type="text" name="memberId" value="${sessionMember.meberId}"> </div>
 			<div>PW : 
 			<input type="password" name="memberPw"></div>
-			<div><button type="submit">가입</button></div>
+			<div><button type="submit">수정</button></div>
 		</form>
 		<div> <a href="${pageContext.request.contextPath}/login">홈으로</a></div>
 	</c:if>
+	
 </body>
 </html>

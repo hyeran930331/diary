@@ -25,7 +25,7 @@
 	<!-- 로그인 성공 -->
 	<c:if test="${sessionMember != null }">
 		(${sessionMember.memberNo}번째 고객) ${sessionMember.memberId }님 반갑습니다.
-		<div><a href="${pageContext.request.contextPath}/auth"> (구현전)다이어리</a></div>
+		<div><a href="${pageContext.request.contextPath}/auth/diary"> 다이어리</a></div>
 		<div> <a href="${pageContext.request.contextPath}/auth/modifyMember">정보수정</a></div>
 		<div> <a href="${pageContext.request.contextPath}/auth/removeMember">탈퇴</a></div>
 		<div> <a href="${pageContext.request.contextPath}/auth/logout">로그아웃</a></div>
