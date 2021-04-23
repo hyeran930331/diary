@@ -23,7 +23,7 @@ public class LoginController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);//경로 오타 _
 	}
 	
-	//로그인 액션 doPost는 많으니깐.
+	//로그인 액션 doPost는 많으니깐. 오버라이딩
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("==========login controller ==========");

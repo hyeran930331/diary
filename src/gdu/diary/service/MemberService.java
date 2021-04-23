@@ -4,18 +4,79 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import gdu.diary.dao.MemberDao;
+import gdu.diary.dao.TodoDao;
 import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
 
 public class MemberService {
 	private DBUtil dbUtil;
 	private MemberDao memberDao;
+	private TodoDao todoDao;
 	// 다른 클래스/메소드(sql 기반)랑 헷갈리면 안되니깐 서비스는 같은뜻 다른식의 표현으로 씀
 	// select -> get
 	// insert -> add
 	// update -> modify
 	// delete -> remove
 	
+	//아이디중복검사후 회원가입
+	public int addMember (Member member) throws SQLException {
+		System.out.println("$$$$$$$$$$ addMember  MemberService $$$$$$$$$$");
+		this.memberDao = new MemberDao();
+		this.dbUtil = new DBUtil();
+		Connection conn = null;
+		
+		int memberrowCnt = 0;
+		int memberIntoRowCnt= 0;
+		try {
+		conn=dbUtil.getConnection();
+		memberrowCnt = this.memberDao.findMemberId(conn,member.getMemberId());
+		System.out.println("$$$$$ memberrowCnt"+ memberrowCnt);
+		if (memberrowCnt == 0) {
+			System.out.println("$$$$$ 사용가능한 아이디라서 memberDao.insertMember ");
+			memberIntoRowCnt = this.memberDao.insertMember(conn, member);
+			conn.commit();
+		}
+		} catch (SQLException e) {
+			try {
+				conn.rollback();
+			} catch(SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+			return memberIntoRowCnt;
+		}
+		return memberIntoRowCnt;
+		
+	}
+	
+	//삭제성공 trun  삭제실패rollback : false
+	public boolean romoveMemberByKey(Member member) {
+		this.todoDao = new TodoDao();
+		this.memberDao = new MemberDao(); //Cannot invoke "gdu.diary.dao.MemberDao.deleteMemberByKey(java.sql.Connection, gdu.diary.vo.Member)" because "this.memberDao" is null
+		this.dbUtil = new DBUtil();
+		Connection conn = null;
+		
+		int todoRowCnt = 0;
+		int memberRowCnt = 0;
+		
+		try {
+		conn=dbUtil.getConnection();
+		todoRowCnt = this.todoDao.deleteToDoByMember(conn, member.getMemberNo());
+		memberRowCnt = this.memberDao.deleteMemberByKey(conn, member);
+		conn.commit();
+		} catch (SQLException e) {
+			try {
+				conn.rollback();
+			} catch(SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+			return false;
+		}
+		return (memberRowCnt+todoRowCnt)>0;
+	}
+	
+	//
 	public Member getMemberByKey(Member member) {
 		this.memberDao = new MemberDao();
 		this.dbUtil = new DBUtil();
