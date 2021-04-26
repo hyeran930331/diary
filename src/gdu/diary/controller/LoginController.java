@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import gdu.diary.service.MemberService;
+import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
 
 /**
@@ -17,6 +18,7 @@ import gdu.diary.vo.Member;
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 	private MemberService memberService; //역시 빨간줄은 해답을 알고있어.
+	private DBUtil dbUtil;
 
 	//로그인 폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,6 +30,7 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("==========login controller ==========");
 		this.memberService = new MemberService();
+		this.dbUtil = new DBUtil();
 		String memberId = request.getParameter("memberId");
 		String memberPw = request.getParameter("memberPw"); //소문자로 p써서 오류났었음
 		System.out.println("===== "+memberId);

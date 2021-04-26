@@ -15,7 +15,6 @@ public class DiaryService {
 		}
 		if(targetMonth != null) {
 			target.set(Calendar.MONTH, Integer.parseInt(targetMonth)-1); //month가 13이면 자동으로 year값을 늘려준다. month가 0이면 자동으로 year값을 내려준다.
-	
 		}
 		
 		//타켓(없으면 오늘)달의 1일(날짜)의 위치값

@@ -25,7 +25,6 @@ public class MemberService {
 	
 	public int modifyMember(Member oldMember, Member newMember)throws SQLException {
 		int rowCnt = 0;
-		this.dbUtil = new DBUtil();
 		Connection conn = null;
 		this.memberDao = new MemberDao();
 		this.todoDao = new TodoDao();
@@ -46,7 +45,6 @@ public class MemberService {
 	public int addMember (Member member) throws SQLException {
 		System.out.println("$$$$$$$$$$ addMember  MemberService $$$$$$$$$$");
 		this.memberDao = new MemberDao();
-		this.dbUtil = new DBUtil();
 		Connection conn = null;
 		
 		int memberrowCnt = 0;
@@ -71,7 +69,6 @@ public class MemberService {
 	public boolean removeMemberByKey(Member member) {
 		this.todoDao = new TodoDao();
 		this.memberDao = new MemberDao(); //Cannot invoke "gdu.diary.dao.MemberDao.deleteMemberByKey(java.sql.Connection, gdu.diary.vo.Member)" because "this.memberDao" is null
-		this.dbUtil = new DBUtil();
 		Connection conn = null;
 		
 		int todoRowCnt = 0;
@@ -79,7 +76,7 @@ public class MemberService {
 		
 		try {
 		conn=dbUtil.getConnection();
-		todoRowCnt = this.todoDao.deleteToDoByMember(conn, member.getMemberNo());
+		todoRowCnt = this.todoDao.deleteTodoByMember(conn, member.getMemberNo());
 		memberRowCnt = this.memberDao.deleteMemberByKey(conn, member);
 		conn.commit();
 		} catch (SQLException e) {
@@ -124,8 +121,6 @@ public class MemberService {
 				e1.printStackTrace(); // 근데 없으면 작동이 안되요~
 			}
 			e.printStackTrace();
-		} finally {
-			this.dbUtil.close(conn, null, null); //뭘 하든 마지막엔 다 종료
 		}
 		
 		return returnMember;

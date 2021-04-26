@@ -13,7 +13,6 @@ public class MemberDao {
 	
 	public int updateMember(Connection conn, Member oldMember, Member newMember) throws SQLException{
 		System.out.println("~~~~~~~~~~~~ updateMember  Memberdao~~~~~~~~~~~");
-		this.dbUtil = new DBUtil();
 		int rowCnt = 0;
 		
 		PreparedStatement stmt = null;
@@ -29,14 +28,13 @@ public class MemberDao {
 			
 			rowCnt = stmt.executeUpdate();
 		} finally {
-			dbUtil.close(null, stmt, null);
+			stmt.close();
 		}	
 		return rowCnt;
 	}
 	
 	public int insertMember(Connection conn, Member member) throws SQLException{
 		System.out.println("############ insertMember  Memberdao###########");
-		this.dbUtil = new DBUtil();
 		
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -48,14 +46,13 @@ public class MemberDao {
 			stmt.setString(2, member.getMemberPw());
 			rowCnt = stmt.executeUpdate();
 		}finally {
-			dbUtil.close(null, stmt, null);
+			stmt.close();
 		}	
 		return rowCnt;
 	}
 	
 	public int findMemberId(Connection conn, String memberId) throws SQLException{
 		System.out.println("\n ############ findMemberId  Memberdao###########");
-		this.dbUtil = new DBUtil();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		int rowCnt = 0;
@@ -80,14 +77,13 @@ public class MemberDao {
 				System.out.println("###사용가능한 아이디 입니다");
 			}
 		} finally {
-			dbUtil.close(null, stmt, null);
+			stmt.close();
 		}
 		return rowCnt;
 	}
 	
 	public int deleteMemberByKey(Connection conn, Member member) throws SQLException{
 		System.out.println("############ deleteMember  Memberdao###########");
-		this.dbUtil = new DBUtil();
 		int rowCnt = 0;
 		PreparedStatement stmt = null;
 		
@@ -97,14 +93,13 @@ public class MemberDao {
 			stmt.setString(2, member.getMemberPw());
 			rowCnt = stmt.executeUpdate();
 		} finally {
-			dbUtil.close(null, stmt, null);
+			stmt.close();
 		}	
 		return rowCnt;
 	}
 	
 	public int insertMember (Connection conn, String memberId, String memberPw) throws SQLException{
 		System.out.println("############ insertMember  Memberdao###########");
-		this.dbUtil = new DBUtil();
 		int rowCnt = 0;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -118,14 +113,14 @@ public class MemberDao {
 			//id중복검사.
 			
 		} finally {
-			dbUtil.close(conn, stmt, rs);
+			stmt.close();
+			rs.close();
 		}
 		return rowCnt;
 	}
 	
 	public Member selectMemberByKey(Connection conn, Member member) throws SQLException{
 		System.out.println("############ selectMemberByKey  Memberdao###########");
-		this.dbUtil = new DBUtil();
 		
 		Member returnMember = null; 		//이것도 이름에리턴이 들어가서 알고 있는것.
 		PreparedStatement stmt = null;
@@ -150,7 +145,8 @@ public class MemberDao {
 				System.out.println("######getMemberId : "+ returnMember.getMemberId());
 			}
 		}finally {
-			dbUtil.close(null, stmt, rs);
+			stmt.close();
+			rs.close();
 		}
 		return returnMember;
 	}

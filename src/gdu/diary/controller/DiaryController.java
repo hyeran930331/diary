@@ -20,7 +20,7 @@ public class DiaryController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.diaryService = new DiaryService();
 		String targetYear = request.getParameter("targetYear"); //2021 ... null
-		String targetMonth = request.getParameter("targetMonth"); // 4 ... null
+		String targetMonth = request.getParameter("targetMonth"); // 4 이면
 		
 		Map<String, Object> diaryMap = this.diaryService.getDiary(targetYear, targetMonth);
 		

@@ -30,7 +30,7 @@ public class ModifyMemberController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.memberService = new MemberService();
-		int newMemberNo = request.getInt("memberNo");
+		int newMemberNo = Integer.parseInt(request.getParameter("memberNo")); //Integer.parseInt(
 		String newMemberPw = request.getParameter("memberPw");
 		
 		Member newMember = new Member();
