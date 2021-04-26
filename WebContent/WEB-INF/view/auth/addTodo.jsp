@@ -8,7 +8,7 @@
 <title>Add todo</title>
 </head>
 <body>
-	<h1>달력</h1>
+	<h1>일정 입력</h1>
 	<form action="${pageContext.request.contextPath}/auth/addTodo" method="post">
 		<div>todoDate : <input type="text" name="todoDate" value="${todoDate.toString()}" readonly="readonly"></div>
 		<div>todoFontColor :<input type="color" name="todoFontColor"> </div>

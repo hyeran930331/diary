@@ -14,6 +14,35 @@ import gdu.diary.vo.Todo;
 public class TodoDao {
 	private DBUtil dbUtil;
 	
+	public List<Todo> selectTodoListByTodo(Connection conn, int todoNo) throws SQLException {
+		System.out.println("~~~~~~~~~~~~ selectTodoList ByTodo  Memberdao~~~~~~~~~~~");
+		List<Todo> list = new ArrayList<>(); //
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = conn.prepareStatement(TodoQuery.SELECT_TODO_LIST_BY_TODO);
+			stmt.setInt(1, todoNo);	
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Todo todo = new Todo();
+				todo.setMemeberNo(rs.getInt("memberNo"));
+				todo.setTodoNo(Integer.parseInt(rs.getString("todoNo")));
+				todo.setTodoDate(rs.getString("todoDate"));
+				System.out.println("~~~~~~todoDate"+todo.getTodoDate());
+				todo.setTodoTitle(rs.getString("todoTitle"));
+				todo.setTodoContent(rs.getString("todoContent"));
+				todo.setTodoFontColor(rs.getString("todoFontColor"));
+				list.add(todo);
+				}
+		} finally {
+			stmt.close();
+			
+		}
+		return list;
+	}
+	
 	public List<Todo> selectTodoListByDate(Connection conn, int memberNo, int targetYear, int targetMonth) throws SQLException {
 		System.out.println("~~~~~~~~~~~~ selectTodoListByDate  Memberdao~~~~~~~~~~~");
 		List<Todo> list = new ArrayList<>(); //
@@ -31,6 +60,7 @@ public class TodoDao {
 			while(rs.next()) {
 				Todo todo = new Todo();
 				todo.setMemeberNo(rs.getInt("memberNo"));
+				todo.setTodoNo(Integer.parseInt(rs.getString("todoNo")));
 				todo.setTodoDate(rs.getString("todoDate"));
 				todo.setTodoTitle(rs.getString("todoTitle"));
 				todo.setTodoFontColor(rs.getString("todoFontColor"));

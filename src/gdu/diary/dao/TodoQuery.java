@@ -15,4 +15,9 @@ public class TodoQuery {
 	static {
 		SELECT_TODO_LIST_BY_DATE = "SELECT member_no memberNo, todo_font_color TodoFontColor, todo_no todoNo, left(todo_title,10) todoTitle, DAY(todo_date) todoDate FROM todo WHERE YEAR(todo_date)=? AND MONTH(todo_date)=? AND member_no=?";
 	}
+	
+	public final static String SELECT_TODO_LIST_BY_TODO;
+	static {
+		SELECT_TODO_LIST_BY_TODO = "SELECT member_no memberNo, todo_font_color TodoFontColor, todo_no todoNo, todo_title todoTitle, todo_date todoDate, todo_content todoContent FROM todo WHERE todo_no=?";
+	}
 }

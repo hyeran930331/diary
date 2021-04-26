@@ -36,7 +36,7 @@
 						<c:forEach var="todo" items="${diaryMap.todoList}">
 							<c:if test="${todo.todoDate == num}">
 								<div style="background-color:${todo.todoFontColor}">
-								<a href="${pageContext.request.contextPath}/auth/todoOne">
+								<a href="${pageContext.request.contextPath}/auth/oneTodo?todoNo=${todo.todoNo}">
 								${todo.todoTitle}
 								</a>
 								</div>
