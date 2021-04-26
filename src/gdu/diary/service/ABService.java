@@ -30,8 +30,6 @@ public class ABService {
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
-		}finally {
-			dbUtil.close(conn, null, null);
 		}
 	}
 
