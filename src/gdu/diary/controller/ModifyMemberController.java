@@ -34,6 +34,8 @@ public class ModifyMemberController extends HttpServlet {
 		String newMemberPw = request.getParameter("memberPw");
 		
 		Member newMember = new Member();
+		newMember.setMemberNo(newMemberNo);
+		newMember.setMemberPw(newMemberPw);
 		
 		Member member = (Member)request.getSession().getAttribute("sessionMember");
 		

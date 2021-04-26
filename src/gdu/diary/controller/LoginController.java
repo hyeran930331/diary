@@ -33,8 +33,8 @@ public class LoginController extends HttpServlet {
 		this.dbUtil = new DBUtil();
 		String memberId = request.getParameter("memberId");
 		String memberPw = request.getParameter("memberPw"); //소문자로 p써서 오류났었음
-		System.out.println("===== "+memberId);
-		System.out.println("===== "+memberPw);
+		System.out.println("===== memberId"+memberId);
+		System.out.println("===== memberPw"+memberPw);
 		
 		Member member = new Member();
 		member.setMemberId(memberId);
@@ -49,7 +49,7 @@ public class LoginController extends HttpServlet {
 			HttpSession session = request.getSession();
 			//session.setAttribute(memberPw, session);
 			session.setAttribute("sessionMember", returnMember);
-			System.out.println("===== "+returnMember); //4:12 안나옴. ->4:30
+			System.out.println("===== returnMember"+returnMember); //4:12 안나옴. ->4:30
 			//Cannot invoke "gdu.diary.vo.Member.setMemberNo(int)" because "returnMember" is null
 		}
 		response.sendRedirect(request.getContextPath()+"/login");

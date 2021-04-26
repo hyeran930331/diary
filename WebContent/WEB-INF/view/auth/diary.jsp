@@ -8,10 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>	
-	<div> ${diaryMap.targetYear}년  ${diaryMap.targetMonth} 월 ${diaryMap.endDay}일이 끝!</div>
-	<div> 첫번째 날짜의 시작일은${diaryMap.startBlank} -> 이걸 토대로 알수 있는 요일 -> 일0 월1 화2 수3 목4 금5 토6</div>
-	<div> -> 앞에 있는 공백은 ${diaryMap.startBlank} -> (일요인0 월요일1 화요일2 수요일3 목요일4 금요일5 토요일 6)개</div>
-	<div> 전체 출력될 cell 수는 : ${diaryMap.totalCell}</div>
+	
+	
+	<div> 전체 출력될 cell 수는 : ${diaryMap.totalCell} : ${diaryMap.totalCell/7}줄</div>
 	
 	<h1>
 		<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth-1}">이전달</a>
@@ -33,7 +32,19 @@
 				<c:if test="${num>0 && num <= diaryMap.endDay}"> <!--num이 endDay갯수만큼은 빈칸출력 -->
 					<td>
 					<a href="${pageContext.request.contextPath}/auth/addTodo?year=${diaryMap.targetYear}&month=${diaryMap.targetMonth}&day=${num}"> ${num} </a>
+					<div>
+						<c:forEach var="todo" items="${diaryMap.todoList}">
+							<c:if test="${todo.todoDate == num}">
+								<div style="background-color:${todo.todoFontColor}">
+								<a href="${pageContext.request.contextPath}/auth/todoOne">
+								${todo.todoTitle}
+								</a>
+								</div>
+							</c:if>						
+						</c:forEach>
+					</div>
 				</c:if>
+				
 				
 				<c:if test="${num >diaryMap.endDay}"> <!--num이  endDay갯수보다 클때는 -->
 					<td>

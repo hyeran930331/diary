@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
@@ -11,6 +13,35 @@ import gdu.diary.vo.Todo;
 
 public class TodoDao {
 	private DBUtil dbUtil;
+	
+	public List<Todo> selectTodoListByDate(Connection conn, int memberNo, int targetYear, int targetMonth) throws SQLException {
+		System.out.println("~~~~~~~~~~~~ selectTodoListByDate  Memberdao~~~~~~~~~~~");
+		List<Todo> list = new ArrayList<>(); //
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = conn.prepareStatement(TodoQuery.SELECT_TODO_LIST_BY_DATE);
+			stmt.setInt(1, targetYear);
+			stmt.setInt(2, targetMonth);
+			System.out.println("~~~~~targetMonth"+(targetMonth));
+			stmt.setInt(3, memberNo);			
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Todo todo = new Todo();
+				todo.setMemeberNo(rs.getInt("memberNo"));
+				todo.setTodoDate(rs.getString("todoDate"));
+				todo.setTodoTitle(rs.getString("todoTitle"));
+				todo.setTodoFontColor(rs.getString("todoFontColor"));
+				list.add(todo);
+				}
+		} finally {
+			stmt.close();
+			
+		}
+		return list;
+	}
 	
 	public int insertTodo (Connection conn, Todo todo) throws SQLException{
 		System.out.println("~~~~~~~~~~~~ insertTodo  Memberdao~~~~~~~~~~~");

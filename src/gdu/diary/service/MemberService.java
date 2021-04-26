@@ -28,6 +28,7 @@ public class MemberService {
 		Connection conn = null;
 		this.memberDao = new MemberDao();
 		this.todoDao = new TodoDao();
+		this.dbUtil = new DBUtil();
 		try {
 			conn=dbUtil.getConnection();
 			

@@ -8,7 +8,6 @@ import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Todo;
 
 public class TodoService {
-	private TodoDao todoDate;
 	private TodoDao todoDao;
 	private DBUtil dbUtil;
 	
