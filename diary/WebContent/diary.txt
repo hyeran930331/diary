@@ -1,0 +1,103 @@
+ColWidths_connform.ListSessions<|||>1<|||>163,50,50,50,50,50,10
+ColsVisible_connform.ListSessions<|||>1<|||>0,1,4,6
+ColPositions_connform.ListSessions<|||>1<|||>0,1,2,3,4,5,6
+ColSort_connform.ListSessions<|||>1<|||>0,0
+MainWinOnMonitor<|||>3<|||>0
+ColWidths_MainForm.ListDatabases<|||>1<|||>150,80,50,50,50,50,50,50,50,50,120
+ColsVisible_MainForm.ListDatabases<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10
+ColPositions_MainForm.ListDatabases<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10
+ColSort_MainForm.ListDatabases<|||>1<|||>0,0
+ColWidths_MainForm.ListVariables<|||>1<|||>160,200,428
+ColsVisible_MainForm.ListVariables<|||>1<|||>0,1,2
+ColPositions_MainForm.ListVariables<|||>1<|||>0,1,2
+ColSort_MainForm.ListVariables<|||>1<|||>0,0
+ColWidths_MainForm.ListStatus<|||>1<|||>160,428,100,100
+ColsVisible_MainForm.ListStatus<|||>1<|||>0,1,2,3
+ColPositions_MainForm.ListStatus<|||>1<|||>0,1,2,3
+ColSort_MainForm.ListStatus<|||>1<|||>0,0
+ColWidths_MainForm.ListProcesses<|||>1<|||>70,80,80,80,80,50,50,197
+ColsVisible_MainForm.ListProcesses<|||>1<|||>0,1,2,3,4,5,6,7
+ColPositions_MainForm.ListProcesses<|||>1<|||>0,1,2,3,4,5,6,7
+ColSort_MainForm.ListProcesses<|||>1<|||>0,1
+ColWidths_MainForm.ListCommandStats<|||>1<|||>120,100,100,100,368
+ColsVisible_MainForm.ListCommandStats<|||>1<|||>0,1,2,3,4
+ColPositions_MainForm.ListCommandStats<|||>1<|||>0,1,2,3,4
+ColSort_MainForm.ListCommandStats<|||>1<|||>1,1
+ColWidths_MainForm.ListTables<|||>1<|||>120,70,70,120,120,70,100,50,70,70,70,70,70,90,120,70,70,70,50
+ColsVisible_MainForm.ListTables<|||>1<|||>0,1,2,3,4,5,6,18
+ColPositions_MainForm.ListTables<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
+ColSort_MainForm.ListTables<|||>1<|||>0,1
+LastSessions<|||>1<|||>root
+LastActiveSession<|||>1<|||>root
+DateTimeEditor_CursorPos_Type4<|||>3<|||>11
+ColWidths_frmTableEditor.listColumns<|||>1<|||>55,134,154,90,60,65,50,117,130,140,100,100
+ColsVisible_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11
+ColPositions_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11
+ColSort_frmTableEditor.listColumns<|||>1<|||>-1,0
+ColWidths_frmTableEditor.treeIndexes<|||>1<|||>1371,100,80
+ColsVisible_frmTableEditor.treeIndexes<|||>1<|||>0,1,2
+ColPositions_frmTableEditor.treeIndexes<|||>1<|||>0,1,2
+ColSort_frmTableEditor.treeIndexes<|||>1<|||>-1,0
+ColWidths_frmTableEditor.listForeignKeys<|||>1<|||>81,1078,123,127,80,80
+ColsVisible_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
+ColPositions_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
+ColSort_frmTableEditor.listForeignKeys<|||>1<|||>-1,0
+MainWinMaximized<|||>3<|||>1
+MainWinLeft<|||>3<|||>115
+MainWinTop<|||>3<|||>192
+MainWinWidth<|||>3<|||>993
+MainWinHeight<|||>3<|||>525
+querymemoheight<|||>3<|||>223
+CreateDbCollation<|||>1<|||>utf8_general_ci
+SQLFile0<|||>1<|||>C:\Users\GDJ34\AppData\Roaming\HeidiSQL\Backups\query-tab-2021-04-21_10-40-30-604.sql
+ExportSQL_CreateDatabases<|||>3<|||>1
+ExportSQL_CreateTables<|||>3<|||>1
+ExportSQL_Filenames<|||>1<|||>C:\Users\GDJ34\Documents\카카오톡 받은 파일\diary.sql<{{{><}}}>
+Servers\root\SessionCreated<|||>1<|||>2021-04-19 09:45:43
+Servers\root\Host<|||>1<|||>127.0.0.1
+Servers\root\WindowsAuth<|||>3<|||>0
+Servers\root\CleartextPluginEnabled<|||>3<|||>0
+Servers\root\User<|||>1<|||>root
+Servers\root\Password<|||>1<|||>6E657A65353434384
+Servers\root\LoginPrompt<|||>3<|||>0
+Servers\root\Port<|||>1<|||>3306
+Servers\root\NetType<|||>3<|||>0
+Servers\root\Compressed<|||>3<|||>0
+Servers\root\LocalTimeZone<|||>3<|||>0
+Servers\root\QueryTimeout<|||>3<|||>30
+Servers\root\KeepAlive<|||>3<|||>20
+Servers\root\FullTableStatus<|||>3<|||>1
+Servers\root\Databases<|||>1<|||>diary;mall
+Servers\root\Library<|||>1<|||>libmariadb.dll
+Servers\root\Comment<|||>1<|||>
+Servers\root\StartupScriptFilename<|||>1<|||>
+Servers\root\TreeBackground<|||>3<|||>536870911
+Servers\root\SSHtunnelHost<|||>1<|||>
+Servers\root\SSHtunnelHostPort<|||>3<|||>22
+Servers\root\SSHtunnelUser<|||>1<|||>
+Servers\root\SSHtunnelPassword<|||>1<|||>7
+Servers\root\SSHtunnelTimeout<|||>3<|||>4
+Servers\root\SSHtunnelPrivateKey<|||>1<|||>
+Servers\root\SSHtunnelPort<|||>3<|||>3307
+Servers\root\SSL_Active<|||>3<|||>0
+Servers\root\SSL_Key<|||>1<|||>
+Servers\root\SSL_Cert<|||>1<|||>
+Servers\root\SSL_CA<|||>1<|||>
+Servers\root\SSL_Cipher<|||>1<|||>
+Servers\root\ServerVersionFull<|||>1<|||>10.5.9-MariaDB - mariadb.org binary distribution
+Servers\root\ConnectCount<|||>3<|||>12
+Servers\root\ServerVersion<|||>3<|||>100509
+Servers\root\LastConnect<|||>1<|||>2021-04-22 16:37:37
+Servers\root\lastUsedDB<|||>1<|||>mall
+Servers\root\RefusedCount<|||>3<|||>2
+Servers\root\diary|member\Sort<|||>1<|||>0_member_id|
+Servers\root\mall|ebook\Sort<|||>1<|||>0_ebook_state|
+Servers\root\mall|state\Sort<|||>1<|||>0_day|
+Servers\root\QueryHistory\1<|||>1<|||>2021-04-19 09:50:00|mall|0|SELECT ebook_no<{{{><}}}>FROM orders<{{{><}}}>WHERE orders_state = '주문완료'<{{{><}}}>GROUP BY ebook_no
+Servers\root\QueryHistory\3<|||>1<|||>2021-04-19 09:52:34|mall|0|SELECT ebook_no, COUNT(ebook_no)<{{{><}}}>FROM orders<{{{><}}}>WHERE orders_state = '주문완료'<{{{><}}}>GROUP BY ebook_no<{{{><}}}>HAVING COUNT(ebook_no) > 1
+Servers\root\QueryHistory\4<|||>1<|||>2021-04-19 09:54:14|mall|0|SELECT ebook_no, COUNT(ebook_no)<{{{><}}}>FROM orders<{{{><}}}>WHERE orders_state = '주문완료'<{{{><}}}>GROUP BY ebook_no<{{{><}}}>HAVING COUNT(ebook_no) > 1<{{{><}}}>ORDER BY COUNT(ebook_no) desc
+Servers\root\QueryHistory\2<|||>1<|||>2021-04-19 09:54:25|mall|0|SELECT ebook_no, COUNT(ebook_no)<{{{><}}}>FROM orders<{{{><}}}>WHERE orders_state = '주문완료'<{{{><}}}>GROUP BY ebook_no<{{{><}}}>HAVING COUNT(ebook_no) > 1<{{{><}}}>ORDER BY COUNT(ebook_no) DESC<{{{><}}}>LIMIT 1
+Servers\root\QueryHistory\5<|||>1<|||>2021-04-19 09:54:29|mall|0|SELECT ebook_no, COUNT(ebook_no)<{{{><}}}>FROM orders<{{{><}}}>WHERE orders_state = '주문완료'<{{{><}}}>GROUP BY ebook_no<{{{><}}}>HAVING COUNT(ebook_no) > 1<{{{><}}}>ORDER BY COUNT(ebook_no) DESC<{{{><}}}>LIMIT 2
+Servers\root\QueryHistory\6<|||>1<|||>2021-04-21 10:51:07|mall|16|UPDATE stats SET stats_count = stats_count+1<{{{><}}}>WHERE stats_day = NOW();
+Servers\root\QueryHistory\7<|||>1<|||>2021-04-22 13:38:57|diary|0|INSERT INTO member(<{{{><}}}>member_id, member_pw, member_date)<{{{><}}}>VALUES ('goodee@gdu.co.kr', PASSWORD('1234'), NOW());<{{{><}}}><{{{><}}}>COMMIT;#must
+Servers\root\QueryHistory\8<|||>1<|||>2021-04-22 16:05:35|diary|0|INSERT INTO member(<{{{><}}}>member_id, member_pw, member_date)<{{{><}}}>VALUES ('mentorrani0331@gmail.com', PASSWORD('1234'), NOW());<{{{><}}}><{{{><}}}>COMMIT;#must
