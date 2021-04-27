@@ -23,7 +23,7 @@ public class MemberService {
 	
 	
 	
-	public int modifyMember(Member oldMember, Member newMember)throws SQLException {
+	public int modifyMember(Member oldMember, String newMemberPw)throws SQLException {
 		int rowCnt = 0;
 		Connection conn = null;
 		this.memberDao = new MemberDao();
@@ -31,9 +31,8 @@ public class MemberService {
 		this.dbUtil = new DBUtil();
 		try {
 			conn=dbUtil.getConnection();
-			
+			rowCnt = this.memberDao.updateMember(conn, oldMember, newMemberPw);
 			conn.commit();
-				
 		} catch(SQLException e) {
 			System.out.println("=====수정 실패");
 			e.printStackTrace();
@@ -41,6 +40,7 @@ public class MemberService {
 		}
 		return rowCnt;
 	}
+	
 	
 	//아이디중복검사후
 	public int addMember (Member member) throws SQLException {

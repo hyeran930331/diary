@@ -15,9 +15,7 @@ import gdu.diary.vo.Member;
 
 @WebServlet("/auth/modifyMember")
 public class ModifyMemberController extends HttpServlet {
-	private DBUtil dbUtil;
 	private MemberService memberService;
-	private Member member;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/view/auth/modifyMember.jsp").forward(request,response);
@@ -29,24 +27,26 @@ public class ModifyMemberController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("========== ModifyMemberController ==========");
 		this.memberService = new MemberService();
-		int newMemberNo = Integer.parseInt(request.getParameter("memberNo")); //Integer.parseInt(
-		String newMemberPw = request.getParameter("memberPw");
+		String newMemberPw = request.getParameter("newMemberPw");
+		String oldMemberPw = request.getParameter("oldMemberPw");
 		
-		Member newMember = new Member();
-		newMember.setMemberNo(newMemberNo);
-		newMember.setMemberPw(newMemberPw);
 		
 		Member member = (Member)request.getSession().getAttribute("sessionMember");
+		member.setMemberPw(oldMemberPw);
 		
 		this.memberService = new MemberService();
 
 		try {
-			int rowCnt = memberService.modifyMember(member, newMember);
-			if (rowCnt >0) {
+			int rowCnt = memberService.modifyMember(member, newMemberPw);
+			if (rowCnt > 0) {
 				System.out.println("=====수정성공");
+				response.sendRedirect(request.getContextPath()+"/auth/logout");
+			}else {
+				System.out.println("=====수정실패");
 				response.sendRedirect(request.getContextPath()+"/login");
-				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			response.sendRedirect(request.getContextPath()+"/auth/modifyMember");

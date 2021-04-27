@@ -15,8 +15,10 @@
 			<input type="text" readonly="readonly" value="${sessionMember.memberId}"> </div>
 			<div>No :
 			<input type="text" name="memberNo" readonly="readonly" value="${sessionMember.memberNo}"> </div>
-			<div>PW : 
-			<input type="password" name="memberPw"></div>
+			<div>현재PW : 
+			<input type="password" name="oldMemberPw"></div>
+			<div>바꿀PW : 
+			<input type="password" name="newMemberPw"></div>
 			<div><button type="submit">수정</button></div>
 		</form>
 	</c:if>

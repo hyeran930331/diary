@@ -9,24 +9,25 @@ import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
 
 public class MemberDao {
-	private DBUtil dbUtil;
 	
-	public int updateMember(Connection conn, Member oldMember, Member newMember) throws SQLException{
+	public int updateMember(Connection conn, Member oldMember, String newMemberPw) throws SQLException{
 		System.out.println("~~~~~~~~~~~~ updateMember  Memberdao~~~~~~~~~~~");
 		int rowCnt = 0;
 		
 		PreparedStatement stmt = null;
-		System.out.println("~~~~~~  newMember.getMemberPw()"+newMember.getMemberPw());
-		System.out.println("~~~~~~  ewMember.getMemberId()" +newMember.getMemberId());
-		System.out.println("~~~~~~  newMember.getMemberPw()"+oldMember.getMemberNo());
+		System.out.println("~~~~~~  newMemberPw"+newMemberPw);
+		System.out.println("~~~~~~ oldMember.getMemberNo()"+oldMember.getMemberNo());
+		System.out.println("~~~~~~ oldMember.getMemberPw()"+oldMember.getMemberPw());
 		
 		try {
 			stmt = conn.prepareStatement(MemberQuery.UPDATE_IDPW_BY_MEMBER);
-			stmt.setString(1, newMember.getMemberPw());
-			stmt.setString(2, newMember.getMemberId());
-			stmt.setInt(3, oldMember.getMemberNo());
+			//쿼리에 맞는 변수를 넣는건 무척 중요한일입니다.
+			stmt.setString(1, newMemberPw);
+			stmt.setInt(2, oldMember.getMemberNo());
+			stmt.setString(3, oldMember.getMemberPw());
 			
 			rowCnt = stmt.executeUpdate();
+			System.out.println("~~~~~~ 수정rowCnt"+rowCnt);
 		} finally {
 			stmt.close();
 		}	

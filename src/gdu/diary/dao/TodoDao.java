@@ -16,6 +16,55 @@ import gdu.diary.vo.Todo;
 public class TodoDao {
 	private DBUtil dbUtil;
 	
+	public int updateTodo(Connection conn, Todo todo) throws SQLException {
+		PreparedStatement stmt = null;
+		int rowCnt =0;
+		
+		try {
+			stmt = conn.prepareStatement(TodoQuery.UPDATE_TODO_BY_TODO);
+			stmt.setString(1, todo.getTodoDate());
+			stmt.setString(2, todo.getTodoFontColor());
+			stmt.setString(3, todo.getTodoTitle());
+			stmt.setString(4, todo.getTodoContent());
+			stmt.setInt(5, todo.getTodoNo());	
+			stmt.setInt(6, todo.getMemeberNo());
+			rowCnt = stmt.executeUpdate();
+		
+		} finally {
+			stmt.close();
+		}
+		return rowCnt;
+	}
+	
+	public Todo selectTodoListByTodo(Connection conn, int memberNo, int todoNo) throws SQLException {
+		System.out.println("~~~~~~~~~~~~ selectTodoList ByTodo  Memberdao~~~~~~~~~~~");
+		Todo todo = new Todo(); //
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = conn.prepareStatement(TodoQuery.SELECT_TODO_BY_TODO);
+			stmt.setInt(1, todoNo);	
+			stmt.setInt(2, memberNo);
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				todo.setMemeberNo(rs.getInt("memberNo"));
+				todo.setTodoNo(Integer.parseInt(rs.getString("todoNo")));
+				todo.setTodoDate(rs.getString("todoDate"));
+				todo.setTodoTitle(rs.getString("todoTitle"));
+				todo.setTodoContent(rs.getString("todoContent"));
+				todo.setTodoFontColor(rs.getString("todoFontColor"));
+			} else {
+				todo = null;
+			}
+		} finally {
+			stmt.close();
+			
+		}
+		return todo;
+	}
+	
 	public List<Map <String,Object>> selectTodoDayList(Connection conn, int memberNo) throws SQLException{
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
