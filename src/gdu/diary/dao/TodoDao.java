@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
@@ -13,6 +15,32 @@ import gdu.diary.vo.Todo;
 
 public class TodoDao {
 	private DBUtil dbUtil;
+	
+	public List<Map <String,Object>> selectTodoDayList(Connection conn, int memberNo) throws SQLException{
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Map <String,Object>> list = new ArrayList<>();
+		
+		try {
+			
+			stmt = conn.prepareStatement(TodoQuery.SELECT_TODO_DDAY_LIST);
+			stmt.setInt(1, memberNo);
+			
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("todoNo", rs.getInt("todoNo"));
+				map.put("todoDate", rs.getString("todoDate"));
+				map.put("todoTitle", rs.getString("todoTitle"));
+				map.put("dday", rs.getInt("dday"));
+				list.add(map);//
+			}
+		} finally {
+			rs.close(); //rs가 없으면 close()가 안된다.
+			stmt.close();
+		}
+		return list;
+	}
 	
 	public List<Todo> selectTodoListByTodo(Connection conn, int todoNo) throws SQLException {
 		System.out.println("~~~~~~~~~~~~ selectTodoList ByTodo  Memberdao~~~~~~~~~~~");

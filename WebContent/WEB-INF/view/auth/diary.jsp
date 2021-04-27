@@ -17,10 +17,27 @@
 		${diaryMap.targetYear}년  ${diaryMap.targetMonth} 월
 		<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth+1}">다음달</a>
 	</h1>
+	
+	<table border="1"> <!-- dday -->
+		<tr>
+			<td colspan="3"><h1>DDAY LIST 10</h1></td>
+		</tr>
+		<tr>
+			<td>todo date</td>
+			<td>todo title</td>
+			<td>dday</td>
+		</tr>
+		<c:forEach var="m" items="${diaryMap.ddayList}" >
+			<tr>
+				<td>${m.todoDate }</td>
+				<td><a href="${pageContext.request.contextPath }/auth/oneTodo?todoNo=?${m.todoNo}">${m.todoTitle }</a></td>
+				<td>-${m.dday }</td>
+			</tr>
+		</c:forEach>
+	</table>
+	
 	<table border="1" width="90%">	
 		<tr>
-			
-			
 			<c:forEach var="i" begin="1" end="${diaryMap.totalCell}" step="1"><!-- for (int i =1; i<totalCell; i++){ -->
 						
 				<c:if test="${diaryMap.startBlank>=i}"> <!--i가 startblank갯수만큼은 빈칸출력 -->
