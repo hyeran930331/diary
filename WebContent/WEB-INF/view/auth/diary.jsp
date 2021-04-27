@@ -11,7 +11,7 @@
 	
 	
 	<div> 전체 출력될 cell 수는 : ${diaryMap.totalCell} : ${diaryMap.totalCell/7}줄</div>
-	
+	<a href="${pageContext.request.contextPath}/login">돌아가기</a>
 	<h1>
 		<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth-1}">이전달</a>
 		${diaryMap.targetYear}년  ${diaryMap.targetMonth} 월

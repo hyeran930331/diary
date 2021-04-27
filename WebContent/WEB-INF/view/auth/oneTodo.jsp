@@ -11,7 +11,7 @@
 	<h1>상세보기</h1>
 
 		<div>todoDate : ${oneTodo.todoDate} </div>
-		<div style="background-color:${oneTodo.todoFontColor}"> </div>
+		<div style="background-color:${oneTodo.todoFontColor}"> 배경색</div>
 		<div>todoTitle : ${oneTodo.todoTitle} </div>
 		<div>todoContent : ${oneTodo.todoContent} </div> 
 		<div>

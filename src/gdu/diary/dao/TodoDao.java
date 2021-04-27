@@ -42,9 +42,9 @@ public class TodoDao {
 		return list;
 	}
 	
-	public List<Todo> selectTodoListByTodo(Connection conn, int todoNo) throws SQLException {
+	public Todo selectTodoListByTodo(Connection conn, int todoNo) throws SQLException {
 		System.out.println("~~~~~~~~~~~~ selectTodoList ByTodo  Memberdao~~~~~~~~~~~");
-		List<Todo> list = new ArrayList<>(); //
+		Todo todo = new Todo(); //
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -54,7 +54,6 @@ public class TodoDao {
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				Todo todo = new Todo();
 				todo.setMemeberNo(rs.getInt("memberNo"));
 				todo.setTodoNo(Integer.parseInt(rs.getString("todoNo")));
 				todo.setTodoDate(rs.getString("todoDate"));
@@ -62,13 +61,12 @@ public class TodoDao {
 				todo.setTodoTitle(rs.getString("todoTitle"));
 				todo.setTodoContent(rs.getString("todoContent"));
 				todo.setTodoFontColor(rs.getString("todoFontColor"));
-				list.add(todo);
 				}
 		} finally {
 			stmt.close();
 			
 		}
-		return list;
+		return todo;
 	}
 	
 	public List<Todo> selectTodoListByDate(Connection conn, int memberNo, int targetYear, int targetMonth) throws SQLException {

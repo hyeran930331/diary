@@ -27,7 +27,7 @@ public class OneTodoController extends HttpServlet {
 		int todoNo = Integer.parseInt(request.getParameter("todoNo"));
 		this.todoService = new TodoService();
 		
-		List<Todo> oneTodo= new ArrayList<>();
+		Todo oneTodo= new Todo();
 		
 		oneTodo = this.todoService.Onetodo(todoNo);
 		System.out.println("===== todo"+oneTodo.toString());
