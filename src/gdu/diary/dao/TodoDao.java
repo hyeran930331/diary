@@ -14,7 +14,25 @@ import gdu.diary.vo.Member;
 import gdu.diary.vo.Todo;
 
 public class TodoDao {
-	private DBUtil dbUtil;
+	
+	public int deleteTodoByTodo(Connection conn, int todoNo) throws SQLException {
+		System.out.println("~~~~~~~~~~~~ deleteTodoByTodo  Memberdao~~~~~~~~~~~");
+		int rowCnt = 0;
+		
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conn.prepareStatement(TodoQuery.DELETE_TODO_BY_TODO);
+			stmt.setInt(1, todoNo);
+			rowCnt = stmt.executeUpdate();
+			System.out.println("~~~~~~~ 삭제 rowCnt :" +rowCnt);
+		} finally {
+			stmt.close();
+		}	
+		return rowCnt;
+	}
+	
+	
 	
 	public int updateTodo(Connection conn, Todo todo) throws SQLException {
 		PreparedStatement stmt = null;
@@ -169,21 +187,6 @@ public class TodoDao {
 		return rowCnt;
 	}
 
-	public int deleteTodoByMember (Connection conn, int memberNo) throws SQLException{
-		System.out.println("~~~~~~~~~~~~ deleteMember  Memberdao~~~~~~~~~~~");
-		int rowCnt = 0;
-		PreparedStatement stmt = null;
-		
-		try {
-			stmt = conn.prepareStatement(TodoQuery.DELETE_TODO_BY_MEMBER);
-			stmt.setInt(1, memberNo);
-			rowCnt = stmt.executeUpdate();
-		} finally {
-			stmt.close();
-		}	
-		return rowCnt;
-	}
-
 	public int updateMember(Connection conn, Member oldMember, Member newMember)throws SQLException {
 		System.out.println("~~~~~~~~~~~~ updateMember  Memberdao~~~~~~~~~~~");
 		int rowCnt = 0;
@@ -195,6 +198,21 @@ public class TodoDao {
 			stmt.setInt(1, oldMember.getMemberNo());
 			stmt.setString(2, newMember.getMemberId());
 			stmt.setString(3, newMember.getMemberPw());
+			rowCnt = stmt.executeUpdate();
+		} finally {
+			stmt.close();
+		}	
+		return rowCnt;
+	}
+	
+	public int deleteTodoByMember (Connection conn, int memberNo) throws SQLException{
+		System.out.println("~~~~~~~~~~~~ deleteMember  Memberdao~~~~~~~~~~~");
+		int rowCnt = 0;
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conn.prepareStatement(TodoQuery.DELETE_TODO_BY_MEMBER);
+			stmt.setInt(1, memberNo);
 			rowCnt = stmt.executeUpdate();
 		} finally {
 			stmt.close();

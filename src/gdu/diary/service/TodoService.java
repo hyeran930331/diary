@@ -14,6 +14,32 @@ public class TodoService {
 	private DBUtil dbUtil;
 	private Todo todo;
 	
+	public int removeTodo(int todoNo) {
+		System.out.println("$$$$$$$$$$ removeTodo TodoService $$$$$$$$$$");
+		this.dbUtil = new DBUtil();
+		this.todoDao = new TodoDao();
+		Connection conn = null;
+		int rowCnt = 0;
+		
+		try {
+			conn=this.dbUtil.getConnection();
+			rowCnt = this.todoDao.deleteTodoByTodo(conn, todoNo);
+			System.out.println("$$$$$$ 삭제 rowCnt : "+rowCnt);
+			conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	
+		return rowCnt;
+	}
+	
 	public int modifyTodo(Todo todo) {
 		System.out.println("$$$$$$$$$$ modifyTodo TodoService $$$$$$$$$$");
 		this.dbUtil = new DBUtil();
