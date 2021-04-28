@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
 
+//resultset preparedstatement connetion jdbcAPI
+//쿼리호출 -> -sql -> RDBM(마리나디비) -> vo건내주기
 public class MemberDao {
 	
 	public int updateMember(Connection conn, Member oldMember, String newMemberPw) throws SQLException{

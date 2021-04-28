@@ -12,9 +12,10 @@ import gdu.diary.service.MemberService;
 import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
 
-/**
- * Servlet implementation class LoginController
- */
+//listener, filter, servlet API
+//요청처리
+//service호출 -vo. ->
+//vo -> 모델 view (jsp 응답) html css / java script
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 	private MemberService memberService; //역시 빨간줄은 해답을 알고있어.

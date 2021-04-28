@@ -11,6 +11,8 @@ import gdu.diary.dao.TodoDao;
 import gdu.diary.util.DBUtil;
 import gdu.diary.vo.Member;
 
+//transation. - dao-> 
+//vo->로직
 public class MemberService {
 	private DBUtil dbUtil;
 	private MemberDao memberDao;
