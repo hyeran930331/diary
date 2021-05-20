@@ -44,6 +44,8 @@ public class LoginController extends HttpServlet {
 		Member returnMember = this.memberService.getMemberByKey(member);
 		if(returnMember == null) {
 			System.out.println("로그인 실패");
+			response.sendRedirect(request.getContextPath()+"/login#fail");
+			//Dispatcher아니고 Redirect! webServlet을 달고 = "로그인 성공" sessionMember를 보낸다.
 
 		} else {
 			System.out.println("로그인 성공"); //4:12 안나옴. ->4:30
@@ -52,8 +54,9 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("sessionMember", returnMember);
 			System.out.println("===== returnMember"+returnMember); //4:12 안나옴. ->4:30
 			//Cannot invoke "gdu.diary.vo.Member.setMemberNo(int)" because "returnMember" is null
+			response.sendRedirect(request.getContextPath()+"/login");
+			//Dispatcher아니고 Redirect! webServlet을 달고 = "로그인 성공" sessionMember를 보낸다.
 		}
-		response.sendRedirect(request.getContextPath()+"/login");
-		//Dispatcher아니고 Redirect! webServlet을 달고 = "로그인 성공" sessionMember를 보낸다.
+
 	}
 }
